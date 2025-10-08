@@ -28,4 +28,36 @@ export default function Pricing() {
   return (
     <>
       <Head><title>Pricing • TideClean AI</title></Head>
-      <main className="min-h-screen p-8 flex items-center justify-center
+      <main className="min-h-screen p-8 flex items-center justify-center">
+        <div className="grid gap-6 md:grid-cols-2 max-w-4xl w-full">
+          <div className="border rounded-2xl p-6">
+            <h2 className="text-2xl font-semibold">Starter</h2>
+            <p className="text-gray-600 mt-2">One-time data cleanup (up to 2 files)</p>
+            <p className="text-3xl font-bold mt-4">$49</p>
+            <button
+              onClick={() => go(STARTER)}
+              disabled={!STARTER || loading===STARTER}
+              className="mt-6 w-full rounded-lg bg-black text-white py-3 disabled:opacity-60"
+            >
+              {loading===STARTER ? 'Redirecting…' : 'Buy Starter'}
+            </button>
+          </div>
+
+          <div className="border rounded-2xl p-6">
+            <h2 className="text-2xl font-semibold">Pro</h2>
+            <p className="text-gray-600 mt-2">Up to 10 files + priority support</p>
+            <p className="text-3xl font-bold mt-4">$149</p>
+            <button
+              onClick={() => go(PRO)}
+              disabled={!PRO || loading===PRO}
+              className="mt-6 w-full rounded-lg bg-black text-white py-3 disabled:opacity-60"
+            >
+              {loading===PRO ? 'Redirecting…' : 'Buy Pro'}
+            </button>
+          </div>
+        </div>
+      </main>
+    </>
+  )
+}
+ justify-center
