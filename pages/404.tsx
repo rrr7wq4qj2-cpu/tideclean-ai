@@ -1,3 +1,4 @@
+// pages/404.tsx
 export default function NotFound() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-3 p-8 text-center">
