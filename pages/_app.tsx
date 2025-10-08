@@ -1,3 +1,4 @@
+// Works with or without alias
 import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 
