@@ -1,12 +1,10 @@
 export default function Home() {
   return (
-    <main className="min-h-screen grid place-items-center p-8">
-      <div className="max-w-xl text-center space-y-4">
-        <h1 className="text-4xl font-bold">TideClean AI</h1>
-        <p className="text-lg text-gray-600">
-          Fresh Next.js 14 + TypeScript + Tailwind starter. Replace this content with your app.
-        </p>
-      </div>
+    <main className="flex min-h-screen flex-col items-center justify-center p-24">
+      <h1 className="text-5xl font-bold text-blue-600">TideClean AI</h1>
+      <p className="mt-4 text-gray-600 text-lg">
+        Smart data cleanup made easy.
+      </p>
     </main>
-  );
+  )
 }
