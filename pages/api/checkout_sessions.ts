@@ -16,9 +16,14 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   const { priceId } = req.body as { priceId?: string }
   if (!priceId) return res.status(400).json({ error: 'Missing priceId' })
 
-  const stripe = new Stripe(stripeSecret, { apiVersion: '2024-06-20' })
+  // Use the API version supported by your installed Stripe types
+  const stripe = new Stripe(stripeSecret, { apiVersion: '2022-11-15' })
+  // (Alternative: `const stripe = new Stripe(stripeSecret)` and omit apiVersion)
 
-  const origin = req.headers.origin || `https://${req.headers.host}`
+  const origin =
+    (req.headers.origin as string | undefined) ||
+    `https://${(req.headers.host as string) || ''}`
+
   try {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
@@ -26,6 +31,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       success_url: `${origin}/success?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${origin}/cancel`,
     })
+
     return res.status(200).json({ url: session.url })
   } catch (err) {
     console.error('Stripe error', err)
